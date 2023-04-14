@@ -88,3 +88,4 @@ C:\Users\georg\source\repos\ITE5331FinalProject\obj\Debug\net6.0\ITE5331FinalPro
 C:\Users\georg\source\repos\ITE5331FinalProject\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\georg\source\repos\ITE5331FinalProject\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\georg\source\repos\ITE5331FinalProject\obj\Debug\net6.0\ITE5331FinalProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\georg\source\repos\ITE5331FinalProject\bin\Debug\net6.0\libman.json

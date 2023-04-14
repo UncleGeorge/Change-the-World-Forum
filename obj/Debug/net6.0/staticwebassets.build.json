@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BULlt1Y4Y9bGFExGuzY2IhDmgVPMUxKXRkxXIUMhgyg=",
+  "Hash": "P6Ljhx8HTn8v2pzK5amUdBBDZWgpAzZz+K+JqCUbu74=",
   "Source": "ITE5331FinalProject",
   "BasePath": "_content/ITE5331FinalProject",
   "Mode": "Default",
@@ -1105,6 +1105,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\georg\\source\\repos\\ITE5331FinalProject\\wwwroot\\js\\chat.js",
+      "SourceId": "ITE5331FinalProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\georg\\source\\repos\\ITE5331FinalProject\\wwwroot\\",
+      "BasePath": "_content/ITE5331FinalProject",
+      "RelativePath": "js/chat.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\chat.js"
+    },
+    {
       "Identity": "C:\\Users\\georg\\source\\repos\\ITE5331FinalProject\\wwwroot\\js\\site.js",
       "SourceId": "ITE5331FinalProject",
       "SourceType": "Discovered",
@@ -2089,6 +2106,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\georg\\source\\repos\\ITE5331FinalProject\\wwwroot\\lib\\signalr\\signalr.js",
+      "SourceId": "ITE5331FinalProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\georg\\source\\repos\\ITE5331FinalProject\\wwwroot\\",
+      "BasePath": "_content/ITE5331FinalProject",
+      "RelativePath": "lib/signalr/signalr.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\signalr\\signalr.js"
+    },
+    {
+      "Identity": "C:\\Users\\georg\\source\\repos\\ITE5331FinalProject\\wwwroot\\lib\\signalr\\signalr.min.js",
+      "SourceId": "ITE5331FinalProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\georg\\source\\repos\\ITE5331FinalProject\\wwwroot\\",
+      "BasePath": "_content/ITE5331FinalProject",
+      "RelativePath": "lib/signalr/signalr.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\signalr\\signalr.min.js"
     }
   ]
 }

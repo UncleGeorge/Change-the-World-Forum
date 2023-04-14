@@ -34,6 +34,13 @@ namespace ITE5331FinalProject.Controllers
             return View();
         }
 
+        public IActionResult Chat()
+        {
+            var author = User.Identity.Name ?? "Guest";
+            ViewData["Author"] = author;
+            return View();
+        }
+
         public IActionResult Search(string searchString)
         {
             var articles = from a in _forumContext.Articles

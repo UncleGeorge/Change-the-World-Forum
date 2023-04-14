@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using ITE5331FinalProject.Data;
 using Microsoft.AspNetCore.Identity;
 using ITE5331FinalProject.Models;
+using ITE5331FinalProject.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
 });
+
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -58,8 +61,11 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapHub<ChatHub>("/chatHub");
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.Run();
