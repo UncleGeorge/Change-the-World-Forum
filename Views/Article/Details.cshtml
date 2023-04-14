@@ -1,0 +1,123 @@
+﻿@model Article
+@using ITE5331FinalProject.Models
+
+<div class="card">
+    <div class="card-body row">
+        <div class="col-1">
+            <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" /></a>
+        </div>
+        <div class="col-11">
+            <div class="d-flex">
+                <div>
+                    <h3>@Model.Title</h3>
+                </div>
+            </div>
+            <span class="small" style="margin-right: 10px;">@Model.Author</span>
+            <span class="text-secondary small" style="margin-right: 10px;">@Model.PublishTime</span>
+            <span class="small">@Model.NumLikes Likes</span>
+            <p class="card-text">
+                @Model.Text
+            </p>
+            <div>
+                @using (Html.BeginForm("Upvote", "Article", FormMethod.Post))
+                {
+                    @Html.Hidden("ArticleId", Model.ArticleId)
+                    <button type="submit" class="btn btn-primary">Like</button>
+                }
+            </div>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <div class="mt-3">
+                    <h5>Change Tag:</h5>
+                    @using (Html.BeginForm("UpdateTag", "Article", FormMethod.Post))
+                    {
+                        @Html.Hidden("ArticleId", Model.ArticleId)
+                        
+                        <select class="form-control" name="SelectedTag" onchange="this.form.submit()">
+                            <option disabled selected value=""> -- Select a Tag -- </option>
+                            @foreach (var tag in Enum.GetValues(typeof(Tag)))
+                            {
+                                <option value="@tag">@tag</option>
+                            }
+                        </select>
+                    }
+                </div>
+            }
+        </div>
+        
+    </div>
+</div>
+
+@if (Model.Comments.Any()){
+    <h4 class="mt-4">Comments:</h4>
+    @foreach (var comment in Model.Comments)
+    {
+        <div class="card mt-2">
+            <div class="card-body row">
+                <div class="col-1">
+                    <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" /></a>
+                </div>
+                <div class="col-9">
+                    <span class="small">@comment.Author</span>
+                    <span class="text-secondary small">@comment.PublishTime</span>
+
+                    <p class="card-text">
+                        @comment.Text
+                    </p>
+                    <span class="text-secondary small">@comment.NumLikes likes</span>
+                    
+                </div>
+                <div class="col-2">
+
+                    <div class="d-inline-block">
+                        @using (Html.BeginForm("UpvoteComment", "Article", FormMethod.Post))
+                        {
+                            @Html.Hidden("CommentId", comment.CommentId)
+                            <button type="submit" class="btn btn-primary">Like</button>
+                        }
+                    </div>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <form asp-controller="Article" asp-action="DeleteComment" asp-route-id="@comment.CommentId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    }
+                    else if (User.Identity.IsAuthenticated && User.Identity.Name == comment.Author)
+                    {
+                        <div class="d-inline-block">
+                            <a asp-controller="Article" asp-action="EditComment" asp-route-id="@comment.CommentId" class="btn btn-sm btn-primary">Edit</a>
+                        </div>
+                        <div class="d-inline-block">
+                            @using (Html.BeginForm("DeleteComment", "Article", FormMethod.Post))
+                            {
+                                @Html.Hidden("CommentId", comment.CommentId)
+                                <button type="submit" class="btn btn-sm btn-danger" style="display:inline;">Delete</button>
+                            }
+                        </div>
+                    }
+                
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-info">
+        There are no comments yet
+    </div>
+}
+
+@if (User.Identity.IsAuthenticated){
+    <h3 class="mt-5">Add a new comment:</h3>
+    @using (Html.BeginForm("AddComment", "Article", FormMethod.Post))
+    {
+        @Html.Hidden("ArticleId", Model.ArticleId)
+
+        <div class="form-group">
+            <textarea class="form-control mt-2" id="commentText" name="Text" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Create New Comment</button>
+    }
+}

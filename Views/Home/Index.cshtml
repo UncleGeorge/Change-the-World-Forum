@@ -1,0 +1,81 @@
+﻿@model List<Article>
+
+<h1>Change the World Forum</h1>
+@if (Model.Any())
+{
+    @foreach (var article in Model)
+    {
+        <div class="card" onclick="location.href='@Url.Action("Details", "Article", new { id = article.ArticleId })'">
+            <div class="card-body row">
+                <div class="col-1">
+                    <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" /></a>
+                </div>
+                <div class="col-5">
+                    <h6>@article.Title</h6>
+                    <p class="card-text">
+                        @{
+                            if (article.Text!.Length > 40)
+                            {
+                                @(
+                                                    article.Text.Substring(0, 40) + "..."
+                                                    )
+                                ;
+                            }
+                            else
+                            {
+                                @article.Text
+                                ;
+                            }
+                        }
+                    </p>
+                </div>
+                <div class="col-1">
+                    <p class="text-secondary small">
+                        @article.Author
+                    </p>
+                </div>
+                <div class="col-1">
+                    <p class="text-secondary small">
+                        @article.Tag
+                    </p>
+                </div>
+                <div class="col-2">
+                    <p class="text-secondary small">
+                        @article.PublishTime
+                    </p>
+                </div>
+                <div class="col-1">
+                    <p class="text-secondary small">
+                        @article.NumViews views
+                    </p>
+                </div>
+                <div class="col-1">
+                    <p class="text-secondary small">
+                        @article.NumLikes likes
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+}
+else
+{
+    <div class="alert alert-info" >
+        No matching articles found
+    </div>
+}
+
+@if (User.Identity.IsAuthenticated){
+    <h3 class="mt-5">Add a new article:</h3>
+    @using (Html.BeginForm("AddArticle", "Article", FormMethod.Post))
+    {
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="articleTitle" name="Title" required />
+            <textarea class="form-control mt-2" id="articleText" name="Text" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Create New Article</button>
+    }
+}

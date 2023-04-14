@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ITE5331FinalProject.props" />
+</Project>
