@@ -14,11 +14,10 @@
                     <h6>@article.Title</h6>
                     <p class="card-text">
                         @{
+                            //When the article is long, only show the first 40 characters of the article
                             if (article.Text!.Length > 40)
                             {
-                                @(
-                                                    article.Text.Substring(0, 40) + "..."
-                                                    )
+                                @(article.Text.Substring(0, 40) + "...")
                                 ;
                             }
                             else
@@ -61,12 +60,13 @@
 }
 else
 {
-    <div class="alert alert-info" >
+    <div class="alert alert-info">
         No matching articles found
     </div>
 }
 
-@if (User.Identity.IsAuthenticated){
+@if (User.Identity.IsAuthenticated)
+{
     <h3 class="mt-5">Add a new article:</h3>
     @using (Html.BeginForm("AddArticle", "Article", FormMethod.Post))
     {

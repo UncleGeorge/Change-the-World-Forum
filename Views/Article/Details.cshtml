@@ -19,6 +19,7 @@
                 @Model.Text
             </p>
             <div>
+                @*like the article*@
                 @using (Html.BeginForm("Upvote", "Article", FormMethod.Post))
                 {
                     @Html.Hidden("ArticleId", Model.ArticleId)
@@ -29,10 +30,11 @@
             {
                 <div class="mt-3">
                     <h5>Change Tag:</h5>
+                    @*admin change the tag of the article*@
                     @using (Html.BeginForm("UpdateTag", "Article", FormMethod.Post))
                     {
                         @Html.Hidden("ArticleId", Model.ArticleId)
-                        
+
                         <select class="form-control" name="SelectedTag" onchange="this.form.submit()">
                             <option disabled selected value=""> -- Select a Tag -- </option>
                             @foreach (var tag in Enum.GetValues(typeof(Tag)))
@@ -69,6 +71,7 @@
                 </div>
                 <div class="col-2">
 
+                    @*like the comment*@
                     <div class="d-inline-block">
                         @using (Html.BeginForm("UpvoteComment", "Article", FormMethod.Post))
                         {
@@ -76,12 +79,14 @@
                             <button type="submit" class="btn btn-primary">Like</button>
                         }
                     </div>
+                    @*for admin to delete*@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <form asp-controller="Article" asp-action="DeleteComment" asp-route-id="@comment.CommentId" method="post" style="display:inline;">
                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
                     }
+                    @*for author to edit and delete*@
                     else if (User.Identity.IsAuthenticated && User.Identity.Name == comment.Author)
                     {
                         <div class="d-inline-block">

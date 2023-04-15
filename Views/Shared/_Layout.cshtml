@@ -26,6 +26,7 @@
                         <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Chat">Chat</a>
                     </li>
 
+                    @*Show username and logout options when logging in*@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">

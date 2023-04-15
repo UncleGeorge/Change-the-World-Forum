@@ -15,7 +15,8 @@ namespace ITE5331FinalProject.Controllers
         {
             _forumContext = forumContext;
         }
-        // Home Page, list all articles
+
+        // open home page, list all articles
         public IActionResult Index()
         {
             var articles = _forumContext.Articles
@@ -34,6 +35,7 @@ namespace ITE5331FinalProject.Controllers
             return View();
         }
 
+        // open chat page, send current user to the page
         public IActionResult Chat()
         {
             var author = User.Identity.Name ?? "Guest";
@@ -41,6 +43,7 @@ namespace ITE5331FinalProject.Controllers
             return View();
         }
 
+        // search function, get all articles with the search string in title and text
         public IActionResult Search(string searchString)
         {
             var articles = from a in _forumContext.Articles
